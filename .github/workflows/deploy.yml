@@ -17,12 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Instalar AWS CLI
-      run: |
-        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-        unzip awscliv2.zip
-        sudo ./aws/install
-
     - name: "Configure AWS Credentials" Action for GitHub Actions
       uses: aws-actions/configure-aws-credentials@v4.1.0
       with:
@@ -38,8 +32,4 @@ jobs:
 
     - name: CodeDeploy despliegue
       run: |
-        aws deploy create-deployment
-          --application-name 'Backends' 
-          --deployment-group-name 'Backends' 
-          --github-location repository='${{github.GITHUB_REPOSITORY}}',commitId='${{github.GITHUB_SHA}}'
-      
+        aws deploy create-deployment --application-name 'Backends' --deployment-group-name 'Backends' --github-location repository='${{github.GITHUB_REPOSITORY}}',commitId='${{github.GITHUB_SHA}}'      
