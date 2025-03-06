@@ -30,4 +30,4 @@ jobs:
 
     - name: CodeDeploy despliegue
       run: |
-        aws deploy create-deployment --application-name 'Backends' --deployment-group-name 'Backends' --github-location repository='${{github.GITHUB_REPOSITORY}}',commitId='${{github.GITHUB_SHA}}'      
+        aws deploy create-deployment --application-name 'Backends' --deployment-group-name 'Backends' --github-location repository='${{github.repository}}',commitId='${{github.sha}}'      
